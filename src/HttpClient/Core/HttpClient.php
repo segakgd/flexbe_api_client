@@ -2,23 +2,21 @@
 
 namespace Segakgd\FlexbeApiClient\HttpClient\Core;
 
+use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpMethodsEnum;
 use Segakgd\FlexbeApiClient\HttpClient\Exception\BadRequestException;
 use Segakgd\FlexbeApiClient\HttpClient\Exception\InvalidMethodException;
 
 class HttpClient
 {
-    public const string METHOD_POST = 'POST';
-    public const string METHOD_GET = 'GET';
-
     /**
      * @throws BadRequestException
      * @throws InvalidMethodException
      */
-    public function request(string $uri, array $requestArray, string $method): array
+    public function request(string $uri, array $requestArray, HttpMethodsEnum $method): array
     {
         $response = match ($method) {
-            self::METHOD_GET => $this->sendGet($uri, $requestArray),
-            self::METHOD_POST => $this->sendPost($uri, $requestArray),
+            HttpMethodsEnum::Get => $this->sendGet($uri, $requestArray),
+            HttpMethodsEnum::Post => $this->sendPost($uri, $requestArray),
             default => throw new InvalidMethodException($method),
         };
 

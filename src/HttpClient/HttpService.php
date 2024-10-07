@@ -16,7 +16,8 @@ class HttpService
      */
     public function request(Request $request): Response
     {
-        $uri = ''; // todo
+        // http://{ваш_домен}/mod/api/?api_key={ключ}&method=getLeads
+        $uri = 'https://' . '/mod/api/?api_key=' . '&method=';
 
         $response = (new HttpClient)->request(
             uri: $uri,
