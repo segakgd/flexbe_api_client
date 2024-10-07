@@ -2,7 +2,7 @@
 
 namespace Segakgd\FlexbeApiClient\HttpClient\Response;
 
-class Response
+readonly class Response
 {
     public function __construct(
         private int $code,
@@ -16,29 +16,14 @@ class Response
         return $this->code;
     }
 
-    public function setCode(int $code): void
-    {
-        $this->code = $code;
-    }
-
     public function getDescription(): string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
     public function getResult(): array
     {
         return $this->result;
-    }
-
-    public function setResult(array $result): void
-    {
-        $this->result = $result;
     }
 
     public static function mapFromArray(array $data): Response

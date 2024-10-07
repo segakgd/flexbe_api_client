@@ -2,38 +2,17 @@
 
 namespace Segakgd\FlexbeApiClient\HttpClient\Request;
 
+use Segakgd\FlexbeApiClient\HttpClient\Enum\FlexbeActionEnum;
 use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpMethodsEnum;
 
-class Request
+readonly class Request
 {
-    private ?array $data = null;
-
-    private string $apiKey;
-
-    private HttpMethodsEnum $method;
-
-    public function getData(): ?array
-    {
-        return $this->data;
-    }
-
-    public function setData(?array $data): self
-    {
-        $this->data = $data;
-
-        return $this;
-    }
-
-    public function getApiKey(): string
-    {
-        return $this->apiKey;
-    }
-
-    public function setApiKey(string $apiKey): self
-    {
-        $this->apiKey = $apiKey;
-
-        return $this;
+    public function __construct(
+        private HttpMethodsEnum $method,
+        private FlexbeActionEnum $action,
+        private string $apiKey,
+        private ?array $data = null,
+    ) {
     }
 
     public function getMethod(): HttpMethodsEnum
@@ -41,10 +20,18 @@ class Request
         return $this->method;
     }
 
-    public function setMethod(HttpMethodsEnum $method): self
+    public function getAction(): FlexbeActionEnum
     {
-        $this->method = $method;
+        return $this->action;
+    }
 
-        return $this;
+    public function getApiKey(): string
+    {
+        return $this->apiKey;
+    }
+
+    public function getData(): ?array
+    {
+        return $this->data;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Segakgd\FlexbeApiClient\HttpClient;
 
+use Segakgd\FlexbeApiClient\Dto\ClientFlexbeDto;
 use Segakgd\FlexbeApiClient\HttpClient\Core\HttpClient;
 use Segakgd\FlexbeApiClient\HttpClient\Exception\BadRequestException;
 use Segakgd\FlexbeApiClient\HttpClient\Exception\InvalidMethodException;
@@ -14,10 +15,11 @@ class HttpService
      * @throws BadRequestException
      * @throws InvalidMethodException
      */
-    public function request(Request $request): Response
+    public function request(Request $request, ClientFlexbeDto $clientFlexbeDto): Response
     {
-        // http://{ваш_домен}/mod/api/?api_key={ключ}&method=getLeads
-        $uri = 'https://' . '/mod/api/?api_key=' . '&method=';
+        $uri = 'https://' . $clientFlexbeDto->getDomain()
+            . '/mod/api/?api_key=' . $clientFlexbeDto->getApiKey()
+            . '&method=' . $request->getAction()->value;
 
         $response = (new HttpClient)->request(
             uri: $uri,
