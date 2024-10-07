@@ -1,0 +1,15 @@
+{
+    "name": "sega/flexbe_api_client",
+    "autoload": {
+        "psr-4": {
+            "Sega\\FlexbeApiClient\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sega",
+            "email": "hpsergeyy@yandex.ru"
+        }
+    ],
+    "require": {}
+}
