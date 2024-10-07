@@ -2,7 +2,7 @@
     "name": "sega/flexbe_api_client",
     "autoload": {
         "psr-4": {
-            "Sega\\FlexbeApiClient\\": "src/"
+            "Segakgd\\FlexbeApiClient\\": "src/"
         }
     },
     "authors": [
