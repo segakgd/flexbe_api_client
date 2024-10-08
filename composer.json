@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-      "ext-curl": "*"
+        "php": "^8.2",
+        "ext-curl": "*"
     }
 }

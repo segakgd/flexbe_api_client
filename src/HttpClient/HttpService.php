@@ -11,7 +11,7 @@ use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
 
 class HttpService
 {
-    private const string URI_FORMAT = 'https://%s/mod/api/?api_key=%s&method=%s';
+    private const URI_FORMAT = 'https://%s/mod/api/?api_key=%s&method=%s';
 
     /**
      * @throws BadRequestException
