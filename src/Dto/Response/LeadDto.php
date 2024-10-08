@@ -2,12 +2,14 @@
 
 namespace Segakgd\FlexbeApiClient\Dto\Response;
 
+use Segakgd\FlexbeApiClient\HttpClient\Enum\LeadStatusEnum;
+
 readonly class LeadDto
 {
     public function __construct(
         private int $id,
         private int $number,
-        private array $status,
+        private ?LeadStatusEnum $status,
         private array $client,
         private string $note,
         private string $formName,
@@ -35,7 +37,7 @@ readonly class LeadDto
         return $this->createdAt;
     }
 
-    public function getStatus(): array
+    public function getStatus(): ?LeadStatusEnum
     {
         return $this->status;
     }
@@ -85,7 +87,9 @@ readonly class LeadDto
         return new static(
             id: $data['id'],
             number: $data['num'],
-            status: $data['status'],
+            status: isset($data['status']['code'])
+                ? LeadStatusEnum::tryFrom($data['status']['code'])
+                : null,
             client: $data['client'],
             note: $data['note'],
             formName: $data['form_name'],
