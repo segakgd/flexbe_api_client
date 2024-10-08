@@ -11,5 +11,7 @@
             "email": "hpsergeyy@yandex.ru"
         }
     ],
-    "require": {}
+    "require": {
+      "ext-curl": "*"
+    }
 }

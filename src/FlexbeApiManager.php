@@ -2,7 +2,7 @@
 
 namespace Segakgd\FlexbeApiClient;
 
-use Segakgd\FlexbeApiClient\Dto\ClientFlexbeDto;
+use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
 use Segakgd\FlexbeApiClient\HttpClient\Enum\FlexbeActionEnum;
 use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpMethodsEnum;
 use Segakgd\FlexbeApiClient\HttpClient\Exception\BadRequestException;
@@ -11,7 +11,7 @@ use Segakgd\FlexbeApiClient\HttpClient\HttpService;
 use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
 use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
 
-readonly class FlexbeManager
+readonly class FlexbeApiManager
 {
     private HttpService $httpService;
 
@@ -24,7 +24,7 @@ readonly class FlexbeManager
      * @throws InvalidMethodException
      * @throws BadRequestException
      */
-    public function getLeads(ClientFlexbeDto $clientFlexbeDto): Response
+    public function getLeads(FlexbeApiClientDto $clientFlexbeDto): Response
     {
         $request = $this->buildRequest(
             method: HttpMethodsEnum::Get,
@@ -39,7 +39,7 @@ readonly class FlexbeManager
      * @throws InvalidMethodException
      * @throws BadRequestException
      */
-    public function changeLead(ClientFlexbeDto $clientFlexbeDto): Response
+    public function changeLead(FlexbeApiClientDto $clientFlexbeDto): Response
     {
         $request = $this->buildRequest(
             method: HttpMethodsEnum::Post,

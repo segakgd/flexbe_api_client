@@ -2,7 +2,7 @@
 
 namespace Segakgd\FlexbeApiClient\Dto;
 
-readonly class ClientFlexbeDto
+readonly class FlexbeApiClientDto
 {
     public function __construct(
         private string $domain,
