@@ -3,15 +3,27 @@
 namespace Segakgd\FlexbeApiClient\HttpClient\Helper;
 
 use Segakgd\FlexbeApiClient\HttpClient\Enum\ErrorCodeEnum;
+use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\InvalidApiKeyException;
+use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\LimitExceededException;
+use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\UndefinedActionException;
+use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\UnknownErrorException;
+use Segakgd\FlexbeApiClient\HttpClient\Response\ErrorResponse;
 
 class FlexbeErrorHelper
 {
-    public static function getErrorMessage(ErrorCodeEnum $errorCode): string
+    /**
+     * @throws UndefinedActionException
+     * @throws UnknownErrorException
+     * @throws InvalidApiKeyException
+     * @throws LimitExceededException
+     */
+    public static function throwByError(ErrorResponse $error): void
     {
-        return match ($errorCode) {
-            ErrorCodeEnum::InvalidApiKey => 'Invalid api key',
-            ErrorCodeEnum::LimitExceeded => 'Request limit exceeded',
-            ErrorCodeEnum::UndefinedAction => 'A non-existent action',
+        throw match ($error->getCode()) {
+            ErrorCodeEnum::InvalidApiKey => new InvalidApiKeyException(),
+            ErrorCodeEnum::LimitExceeded => new LimitExceededException(),
+            ErrorCodeEnum::UndefinedAction => new UndefinedActionException(),
+            default => new UnknownErrorException(),
         };
     }
 }

@@ -20,6 +20,11 @@ readonly class Response
         return $this->error;
     }
 
+    public function isError(): bool
+    {
+        return !is_null($this->error);
+    }
+
     public static function mapFromArray(array $data): Response
     {
         return new static(

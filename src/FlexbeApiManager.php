@@ -21,8 +21,12 @@ readonly class FlexbeApiManager
     }
 
     /**
-     * @throws InvalidMethodException
      * @throws BadRequestException
+     * @throws HttpClient\Exception\Http\InvalidApiKeyException
+     * @throws HttpClient\Exception\Http\LimitExceededException
+     * @throws HttpClient\Exception\Http\UndefinedActionException
+     * @throws HttpClient\Exception\Http\UnknownErrorException
+     * @throws InvalidMethodException
      */
     public function getLeads(FlexbeApiClientDto $clientFlexbeDto): Response
     {
@@ -36,8 +40,12 @@ readonly class FlexbeApiManager
     }
 
     /**
-     * @throws InvalidMethodException
      * @throws BadRequestException
+     * @throws HttpClient\Exception\Http\InvalidApiKeyException
+     * @throws HttpClient\Exception\Http\LimitExceededException
+     * @throws HttpClient\Exception\Http\UndefinedActionException
+     * @throws HttpClient\Exception\Http\UnknownErrorException
+     * @throws InvalidMethodException
      */
     public function changeLead(FlexbeApiClientDto $clientFlexbeDto): Response
     {

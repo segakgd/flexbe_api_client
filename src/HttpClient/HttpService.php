@@ -6,6 +6,7 @@ use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
 use Segakgd\FlexbeApiClient\HttpClient\Core\HttpClient;
 use Segakgd\FlexbeApiClient\HttpClient\Exception\BadRequestException;
 use Segakgd\FlexbeApiClient\HttpClient\Exception\InvalidMethodException;
+use Segakgd\FlexbeApiClient\HttpClient\Helper\FlexbeErrorHelper;
 use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
 use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
 
@@ -15,6 +16,10 @@ class HttpService
 
     /**
      * @throws BadRequestException
+     * @throws Exception\Http\InvalidApiKeyException
+     * @throws Exception\Http\LimitExceededException
+     * @throws Exception\Http\UndefinedActionException
+     * @throws Exception\Http\UnknownErrorException
      * @throws InvalidMethodException
      */
     public function request(Request $request, FlexbeApiClientDto $clientFlexbeDto): Response
@@ -25,7 +30,13 @@ class HttpService
             method: $request->getMethod()
         );
 
-        return Response::mapFromArray($response);
+        $response = Response::mapFromArray($response);
+
+        if ($response->isError()) {
+            FlexbeErrorHelper::throwByError($response->getError());
+        }
+
+        return $response;
     }
 
     private function makeUri(Request $request, FlexbeApiClientDto $clientFlexbeDto): string
