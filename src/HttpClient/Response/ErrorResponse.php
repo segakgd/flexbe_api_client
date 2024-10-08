@@ -28,9 +28,7 @@ readonly class ErrorResponse
             code: isset($data['code'])
                 ? ErrorCodeEnum::from($data['code'])
                 : null,
-            message: isset($data['msg'])
-                ? ErrorCodeEnum::from($data['msg'])
-                : null,
+            message: $data['msg'] ?? null,
         );
     }
 }
