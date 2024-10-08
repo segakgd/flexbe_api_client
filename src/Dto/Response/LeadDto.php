@@ -10,8 +10,8 @@ readonly class LeadDto
         private int $id,
         private int $number,
         private ?LeadStatusEnum $status,
-        private array $client,
-        private string $note,
+        private ?ClientInfoDto $client,
+        private ?string $note,
         private string $formName,
         private array $formData,
         private array $products,
@@ -42,7 +42,7 @@ readonly class LeadDto
         return $this->status;
     }
 
-    public function getClient(): array
+    public function getClient(): ?ClientInfoDto
     {
         return $this->client;
     }
@@ -90,8 +90,10 @@ readonly class LeadDto
             status: isset($data['status']['code'])
                 ? LeadStatusEnum::tryFrom($data['status']['code'])
                 : null,
-            client: $data['client'],
-            note: $data['note'],
+            client: isset($data['client'])
+                ? ClientInfoDto::makeFromArray($data['client'])
+                : null,
+            note: $data['note'] ?? null,
             formName: $data['form_name'],
             formData: $data['form_data'],
             products: $data['products'],
