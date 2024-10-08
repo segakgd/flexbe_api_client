@@ -5,33 +5,28 @@ namespace Segakgd\FlexbeApiClient\HttpClient\Response;
 readonly class Response
 {
     public function __construct(
-        private int $code,
-        private array $result,
-        private string $description,
+        private array $data,
+        private ?ErrorResponse $error,
     ) {
     }
 
-    public function getCode(): int
+    public function getData(): array
     {
-        return $this->code;
+        return $this->data;
     }
 
-    public function getDescription(): string
+    public function getError(): ?ErrorResponse
     {
-        return $this->description;
-    }
-
-    public function getResult(): array
-    {
-        return $this->result;
+        return $this->error;
     }
 
     public static function mapFromArray(array $data): Response
     {
         return new static(
-            code: isset($data['ok']) ? 200 : 400,
-            result: $data['result'] ?? [],
-            description: $data['description'] ?? '',
+            data: $data['data'] ?? [],
+            error: isset($data['error'])
+                ? ErrorResponse::mapFromArray($data['error'])
+                : null,
         );
     }
 }
