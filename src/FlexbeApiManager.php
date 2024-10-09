@@ -2,8 +2,8 @@
 
 namespace Segakgd\FlexbeApiClient;
 
+use Segakgd\FlexbeApiClient\Dto\Collections;
 use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
-use Segakgd\FlexbeApiClient\Dto\Response\Collections;
 use Segakgd\FlexbeApiClient\Dto\Response\LeadDto;
 use Segakgd\FlexbeApiClient\HttpClient\Enum\FlexbeActionEnum;
 use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpMethodsEnum;

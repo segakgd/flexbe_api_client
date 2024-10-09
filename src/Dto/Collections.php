@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\Dto\Response;
+namespace Segakgd\FlexbeApiClient\Dto;
 
 use ArrayIterator;
 use Countable;

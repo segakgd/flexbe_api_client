@@ -15,9 +15,9 @@ readonly class LeadDto
         private string $formName,
         private array $formData,
         private array $products,
-        private array $page,
-        private array $utm,
-        private ?array $pay,
+        private ?PageDto $page,
+        private ?UtmDto $utm,
+        private ?PayDto $pay,
         private int $createdAt,
     ) {
     }
@@ -67,17 +67,17 @@ readonly class LeadDto
         return $this->products;
     }
 
-    public function getPage(): array
+    public function getPage(): ?PageDto
     {
         return $this->page;
     }
 
-    public function getUtm(): array
+    public function getUtm(): ?UtmDto
     {
         return $this->utm;
     }
 
-    public function getPay(): ?array
+    public function getPay(): ?PayDto
     {
         return $this->pay;
     }
@@ -97,9 +97,15 @@ readonly class LeadDto
             formName: $data['form_name'],
             formData: $data['form_data'],
             products: $data['products'],
-            page: $data['page'],
-            utm: $data['utm'],
-            pay: $data['pay'] ?? null,
+            page: isset($data['page'])
+                ? PageDto::makeFromArray($data['page'])
+                : null,
+            utm: isset($data['utm'])
+                ? UtmDto::makeFromArray($data['utm'])
+                : null,
+            pay: isset($data['pay'])
+                ? PayDto::makeFromArray($data['pay'])
+                : null,
             createdAt: $data['time'],
         );
     }
