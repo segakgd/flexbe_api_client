@@ -57,7 +57,7 @@ readonly class PayDto
         return new static(
             id: $data['id'],
             amount: $data['summ'],
-            status: PaymentStatusEnum::tryFrom($data['status']),
+            status: PaymentStatusEnum::tryFrom($data['status']['code']),
             desc: $data['desc'] ?? null,
             payLink: $data['pay_link'] ?? null,
             createdAt: $data['time_create'],
