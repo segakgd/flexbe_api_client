@@ -2,9 +2,9 @@
 
 namespace Segakgd\FlexbeApiClient\HttpClient\Core;
 
-use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpMethodsEnum;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\BadRequestException;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\InvalidMethodException;
+use Segakgd\FlexbeApiClient\Enum\HttpMethodsEnum;
+use Segakgd\FlexbeApiClient\Exception\BadRequestException;
+use Segakgd\FlexbeApiClient\Exception\InvalidMethodException;
 
 class HttpClient
 {

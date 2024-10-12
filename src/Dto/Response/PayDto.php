@@ -2,7 +2,7 @@
 
 namespace Segakgd\FlexbeApiClient\Dto\Response;
 
-use Segakgd\FlexbeApiClient\HttpClient\Enum\PaymentStatusEnum;
+use Segakgd\FlexbeApiClient\Enum\PaymentStatusEnum;
 
 readonly class PayDto
 {

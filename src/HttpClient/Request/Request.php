@@ -2,8 +2,8 @@
 
 namespace Segakgd\FlexbeApiClient\HttpClient\Request;
 
-use Segakgd\FlexbeApiClient\HttpClient\Enum\FlexbeActionEnum;
-use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpMethodsEnum;
+use Segakgd\FlexbeApiClient\Enum\FlexbeActionEnum;
+use Segakgd\FlexbeApiClient\Enum\HttpMethodsEnum;
 
 readonly class Request
 {

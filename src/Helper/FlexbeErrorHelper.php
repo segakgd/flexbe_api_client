@@ -1,12 +1,12 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Helper;
+namespace Segakgd\FlexbeApiClient\Helper;
 
-use Segakgd\FlexbeApiClient\HttpClient\Enum\ErrorCodeEnum;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\InvalidApiKeyException;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\LimitExceededException;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\UndefinedActionException;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\Http\UnknownErrorException;
+use Segakgd\FlexbeApiClient\Enum\ErrorCodeEnum;
+use Segakgd\FlexbeApiClient\Exception\Http\InvalidApiKeyException;
+use Segakgd\FlexbeApiClient\Exception\Http\LimitExceededException;
+use Segakgd\FlexbeApiClient\Exception\Http\UndefinedActionException;
+use Segakgd\FlexbeApiClient\Exception\Http\UnknownErrorException;
 use Segakgd\FlexbeApiClient\HttpClient\Response\ErrorResponse;
 
 class FlexbeErrorHelper

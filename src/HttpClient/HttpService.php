@@ -3,10 +3,14 @@
 namespace Segakgd\FlexbeApiClient\HttpClient;
 
 use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
+use Segakgd\FlexbeApiClient\Exception\BadRequestException;
+use Segakgd\FlexbeApiClient\Exception\Http\InvalidApiKeyException;
+use Segakgd\FlexbeApiClient\Exception\Http\LimitExceededException;
+use Segakgd\FlexbeApiClient\Exception\Http\UndefinedActionException;
+use Segakgd\FlexbeApiClient\Exception\Http\UnknownErrorException;
+use Segakgd\FlexbeApiClient\Exception\InvalidMethodException;
+use Segakgd\FlexbeApiClient\Helper\FlexbeErrorHelper;
 use Segakgd\FlexbeApiClient\HttpClient\Core\HttpClient;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\BadRequestException;
-use Segakgd\FlexbeApiClient\HttpClient\Exception\InvalidMethodException;
-use Segakgd\FlexbeApiClient\HttpClient\Helper\FlexbeErrorHelper;
 use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
 use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
 
@@ -16,10 +20,10 @@ class HttpService
 
     /**
      * @throws BadRequestException
-     * @throws Exception\Http\InvalidApiKeyException
-     * @throws Exception\Http\LimitExceededException
-     * @throws Exception\Http\UndefinedActionException
-     * @throws Exception\Http\UnknownErrorException
+     * @throws InvalidApiKeyException
+     * @throws LimitExceededException
+     * @throws UndefinedActionException
+     * @throws UnknownErrorException
      * @throws InvalidMethodException
      */
     public function request(Request $request, FlexbeApiClientDto $clientFlexbeDto): Response

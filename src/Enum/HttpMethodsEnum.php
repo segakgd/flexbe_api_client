@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Enum;
+namespace Segakgd\FlexbeApiClient\Enum;
 
 enum HttpMethodsEnum: string
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Exception;
+namespace Segakgd\FlexbeApiClient\Exception;
 
 use Exception;
 

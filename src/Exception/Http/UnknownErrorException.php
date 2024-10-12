@@ -1,9 +1,9 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Exception\Http;
+namespace Segakgd\FlexbeApiClient\Exception\Http;
 
 use Exception;
-use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpCodeEnum;
+use Segakgd\FlexbeApiClient\Enum\HttpCodeEnum;
 
 class UnknownErrorException extends Exception
 {

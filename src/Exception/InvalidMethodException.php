@@ -1,9 +1,9 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Exception;
+namespace Segakgd\FlexbeApiClient\Exception;
 
 use Exception;
-use Segakgd\FlexbeApiClient\HttpClient\Enum\HttpMethodsEnum;
+use Segakgd\FlexbeApiClient\Enum\HttpMethodsEnum;
 
 class InvalidMethodException extends Exception
 {

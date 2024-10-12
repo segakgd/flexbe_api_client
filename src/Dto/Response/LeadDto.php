@@ -2,7 +2,7 @@
 
 namespace Segakgd\FlexbeApiClient\Dto\Response;
 
-use Segakgd\FlexbeApiClient\HttpClient\Enum\LeadStatusEnum;
+use Segakgd\FlexbeApiClient\Enum\LeadStatusEnum;
 
 readonly class LeadDto
 {

@@ -2,7 +2,7 @@
 
 namespace Segakgd\FlexbeApiClient\HttpClient\Response;
 
-use Segakgd\FlexbeApiClient\HttpClient\Enum\ErrorCodeEnum;
+use Segakgd\FlexbeApiClient\Enum\ErrorCodeEnum;
 
 readonly class ErrorResponse
 {
