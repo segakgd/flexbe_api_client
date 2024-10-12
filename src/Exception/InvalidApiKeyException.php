@@ -1,19 +1,19 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\Exception\Http;
+namespace Segakgd\FlexbeApiClient\Exception;
 
 use Exception;
 use Segakgd\FlexbeApiClient\Enum\HttpCodeEnum;
 
-class UnknownErrorException extends Exception
+class InvalidApiKeyException extends Exception
 {
-    private const MESSAGE = 'Unknown error.';
+    private const MESSAGE = 'Invalid api key.';
 
     public function __construct()
     {
         parent::__construct(
             message: static::MESSAGE,
-            code: HttpCodeEnum::UnknownError->value,
+            code: HttpCodeEnum::Forbidden->value,
         );
     }
 }

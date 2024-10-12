@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\Exception\Http;
+namespace Segakgd\FlexbeApiClient\Exception;
 
 use Exception;
 use Segakgd\FlexbeApiClient\Enum\HttpCodeEnum;
