@@ -1,6 +1,14 @@
 # flexbe_api_client
  Api client for the flexbe web designer
 
+## Installation
+
+Install via Composer:
+
+```bash
+composer require segakgd/flexbe_api_client
+```
+
 ### Example Usage:
 
 ``` php
