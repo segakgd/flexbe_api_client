@@ -15,6 +15,7 @@ use Segakgd\FlexbeApiClient\Exception\Http\UnknownErrorException;
 use Segakgd\FlexbeApiClient\Exception\InvalidMethodException;
 use Segakgd\FlexbeApiClient\HttpClient\HttpService;
 use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
+use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
 
 readonly class FlexbeApiManager
 {
@@ -57,6 +58,26 @@ readonly class FlexbeApiManager
         }
 
         return $collections;
+    }
+
+    /**
+     * @throws BadRequestException
+     * @throws InvalidApiKeyException
+     * @throws LimitExceededException
+     * @throws UndefinedActionException
+     * @throws UnknownErrorException
+     * @throws InvalidMethodException
+     */
+    public function changeLead(FlexbeApiClientDto $clientFlexbeDto): Response
+    {
+        $request = $this->buildRequest(
+            method: HttpMethodsEnum::Post,
+            action: FlexbeActionEnum::ChangeLead,
+            apiKey: $clientFlexbeDto->getApiKey(),
+            data: [],
+        );
+
+        return $this->httpService->request($request, $clientFlexbeDto);
     }
 
     private function buildRequest(
