@@ -5,18 +5,16 @@ namespace Segakgd\FlexbeApiClient;
 use Segakgd\FlexbeApiClient\Dto\Collections;
 use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
 use Segakgd\FlexbeApiClient\Dto\Request\LeadFilterRequest;
+use Segakgd\FlexbeApiClient\Dto\Request\LeadUpdateRequest;
 use Segakgd\FlexbeApiClient\Dto\Response\LeadDto;
 use Segakgd\FlexbeApiClient\Enum\FlexbeActionEnum;
-use Segakgd\FlexbeApiClient\Enum\HttpMethodsEnum;
 use Segakgd\FlexbeApiClient\Exception\BadRequestException;
-use Segakgd\FlexbeApiClient\Exception\Http\InvalidApiKeyException;
-use Segakgd\FlexbeApiClient\Exception\Http\LimitExceededException;
-use Segakgd\FlexbeApiClient\Exception\Http\UndefinedActionException;
-use Segakgd\FlexbeApiClient\Exception\Http\UnknownErrorException;
-use Segakgd\FlexbeApiClient\Exception\InvalidMethodException;
+use Segakgd\FlexbeApiClient\Exception\InvalidApiKeyException;
+use Segakgd\FlexbeApiClient\Exception\LimitExceededException;
+use Segakgd\FlexbeApiClient\Exception\UndefinedActionException;
+use Segakgd\FlexbeApiClient\Exception\UnknownErrorException;
 use Segakgd\FlexbeApiClient\HttpClient\HttpService;
 use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
-use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
 
 readonly class FlexbeApiManager
 {
@@ -35,14 +33,12 @@ readonly class FlexbeApiManager
      * @throws LimitExceededException
      * @throws UndefinedActionException
      * @throws UnknownErrorException
-     * @throws InvalidMethodException
      */
     public function getLeads(
         FlexbeApiClientDto $clientFlexbeDto,
         ?LeadFilterRequest $leadFilterRequest = null
     ): Collections {
         $request = $this->buildRequest(
-            method: HttpMethodsEnum::Get,
             action: FlexbeActionEnum::GetLeads,
             apiKey: $clientFlexbeDto->getApiKey(),
             data: $leadFilterRequest?->toArray()
@@ -70,28 +66,27 @@ readonly class FlexbeApiManager
      * @throws LimitExceededException
      * @throws UndefinedActionException
      * @throws UnknownErrorException
-     * @throws InvalidMethodException
      */
-    public function changeLead(FlexbeApiClientDto $clientFlexbeDto): Response
+    public function changeLead(FlexbeApiClientDto $clientFlexbeDto, LeadUpdateRequest $leadUpdateRequest): LeadDto
     {
         $request = $this->buildRequest(
-            method: HttpMethodsEnum::Post,
             action: FlexbeActionEnum::ChangeLead,
             apiKey: $clientFlexbeDto->getApiKey(),
-            data: [],
+            data: $leadUpdateRequest->toArray()
         );
 
-        return $this->httpService->request($request, $clientFlexbeDto);
+        $data = $this->httpService->request($request, $clientFlexbeDto)->getData();
+        $lead = $data['lead'];
+
+        return LeadDto::makeFromArray($lead);
     }
 
     private function buildRequest(
-        HttpMethodsEnum $method,
         FlexbeActionEnum $action,
         string $apiKey,
         ?array $data = null,
     ): Request {
         return new Request(
-            method: $method,
             action: $action,
             apiKey: $apiKey,
             data: $data,

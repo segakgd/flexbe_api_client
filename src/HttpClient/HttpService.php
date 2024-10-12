@@ -4,11 +4,10 @@ namespace Segakgd\FlexbeApiClient\HttpClient;
 
 use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
 use Segakgd\FlexbeApiClient\Exception\BadRequestException;
-use Segakgd\FlexbeApiClient\Exception\Http\InvalidApiKeyException;
-use Segakgd\FlexbeApiClient\Exception\Http\LimitExceededException;
-use Segakgd\FlexbeApiClient\Exception\Http\UndefinedActionException;
-use Segakgd\FlexbeApiClient\Exception\Http\UnknownErrorException;
-use Segakgd\FlexbeApiClient\Exception\InvalidMethodException;
+use Segakgd\FlexbeApiClient\Exception\InvalidApiKeyException;
+use Segakgd\FlexbeApiClient\Exception\LimitExceededException;
+use Segakgd\FlexbeApiClient\Exception\UndefinedActionException;
+use Segakgd\FlexbeApiClient\Exception\UnknownErrorException;
 use Segakgd\FlexbeApiClient\Helper\FlexbeErrorHelper;
 use Segakgd\FlexbeApiClient\HttpClient\Core\HttpClient;
 use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
@@ -24,7 +23,6 @@ class HttpService
      * @throws LimitExceededException
      * @throws UndefinedActionException
      * @throws UnknownErrorException
-     * @throws InvalidMethodException
      */
     public function request(Request $request, FlexbeApiClientDto $clientFlexbeDto): Response
     {
@@ -36,7 +34,6 @@ class HttpService
         $response = (new HttpClient)->request(
             uri: $this->makeUri($clientFlexbeDto),
             requestArray: $date,
-            method: $request->getMethod(),
         );
 
         $response = Response::mapFromArray($response);
