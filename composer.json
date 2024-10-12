@@ -1,5 +1,5 @@
 {
-    "name": "sega/flexbe_api_client",
+    "name": "segakgd/flexbe_api_client",
     "description": "A PHP client for interacting with the Flexbe API.",
     "type": "library",
     "license": "MIT",
