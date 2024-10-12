@@ -28,11 +28,16 @@ class HttpClient
      */
     private function sendGet(string $uri, array $requestArray): string
     {
-        $curl = curl_init($uri . http_build_query($requestArray));
+        $curl = curl_init($uri);
 
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HEADER, false);
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => http_build_query($requestArray)
+        ));
 
         $response = curl_exec($curl);
 

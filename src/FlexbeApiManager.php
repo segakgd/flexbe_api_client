@@ -4,6 +4,7 @@ namespace Segakgd\FlexbeApiClient;
 
 use Segakgd\FlexbeApiClient\Dto\Collections;
 use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
+use Segakgd\FlexbeApiClient\Dto\Request\LeadFilterRequest;
 use Segakgd\FlexbeApiClient\Dto\Response\LeadDto;
 use Segakgd\FlexbeApiClient\Enum\FlexbeActionEnum;
 use Segakgd\FlexbeApiClient\Enum\HttpMethodsEnum;
@@ -36,12 +37,15 @@ readonly class FlexbeApiManager
      * @throws UnknownErrorException
      * @throws InvalidMethodException
      */
-    public function getLeads(FlexbeApiClientDto $clientFlexbeDto): Collections
-    {
+    public function getLeads(
+        FlexbeApiClientDto $clientFlexbeDto,
+        ?LeadFilterRequest $leadFilterRequest = null
+    ): Collections {
         $request = $this->buildRequest(
             method: HttpMethodsEnum::Get,
             action: FlexbeActionEnum::GetLeads,
             apiKey: $clientFlexbeDto->getApiKey(),
+            data: $leadFilterRequest?->toArray()
         );
 
         $data = $this->httpService->request($request, $clientFlexbeDto)->getData();

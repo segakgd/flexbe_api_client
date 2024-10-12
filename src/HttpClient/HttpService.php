@@ -16,7 +16,7 @@ use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
 
 class HttpService
 {
-    private const URI_FORMAT = 'https://%s/mod/api/?api_key=%s&method=%s';
+    private const URI_FORMAT = 'https://%s/mod/api/';
 
     /**
      * @throws BadRequestException
@@ -28,10 +28,15 @@ class HttpService
      */
     public function request(Request $request, FlexbeApiClientDto $clientFlexbeDto): Response
     {
+        $date = $request->getData() ?? [];
+
+        $date['api_key'] = $clientFlexbeDto->getApiKey();
+        $date['method'] = $request->getAction()->value;
+
         $response = (new HttpClient)->request(
-            uri: $this->makeUri($request, $clientFlexbeDto),
-            requestArray: $request->getData() ?? [],
-            method: $request->getMethod()
+            uri: $this->makeUri($clientFlexbeDto),
+            requestArray: $date,
+            method: $request->getMethod(),
         );
 
         $response = Response::mapFromArray($response);
@@ -43,13 +48,11 @@ class HttpService
         return $response;
     }
 
-    private function makeUri(Request $request, FlexbeApiClientDto $clientFlexbeDto): string
+    private function makeUri(FlexbeApiClientDto $clientFlexbeDto): string
     {
         return sprintf(
             static::URI_FORMAT,
             $clientFlexbeDto->getDomain(),
-            $clientFlexbeDto->getApiKey(),
-            $request->getAction()->value
         );
     }
 }
