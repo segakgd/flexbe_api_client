@@ -47,6 +47,4 @@ $leadUpdateRequest = new LeadUpdateRequest(
 );
 
 $flexbeManager->changeLead($clientFlexbeDto, $leadUpdateRequest);
-
-// $leads will contain the response with your Flexbe leads
 ```
