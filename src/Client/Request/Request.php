@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Request;
+namespace Segakgd\FlexbeApiClient\Client\Request;
 
 use Segakgd\FlexbeApiClient\Enum\FlexbeActionEnum;
 

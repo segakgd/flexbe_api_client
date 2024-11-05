@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Response;
+namespace Segakgd\FlexbeApiClient\Client\Response;
 
 readonly class Response
 {

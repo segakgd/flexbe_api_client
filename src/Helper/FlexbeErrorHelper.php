@@ -7,7 +7,7 @@ use Segakgd\FlexbeApiClient\Exception\InvalidApiKeyException;
 use Segakgd\FlexbeApiClient\Exception\LimitExceededException;
 use Segakgd\FlexbeApiClient\Exception\UndefinedActionException;
 use Segakgd\FlexbeApiClient\Exception\UnknownErrorException;
-use Segakgd\FlexbeApiClient\HttpClient\Response\ErrorResponse;
+use Segakgd\FlexbeApiClient\Client\Response\ErrorResponse;
 
 class FlexbeErrorHelper
 {

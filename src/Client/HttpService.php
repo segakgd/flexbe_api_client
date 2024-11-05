@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient;
+namespace Segakgd\FlexbeApiClient\Client;
 
 use Segakgd\FlexbeApiClient\Dto\FlexbeApiClientDto;
 use Segakgd\FlexbeApiClient\Exception\BadRequestException;
@@ -9,9 +9,9 @@ use Segakgd\FlexbeApiClient\Exception\LimitExceededException;
 use Segakgd\FlexbeApiClient\Exception\UndefinedActionException;
 use Segakgd\FlexbeApiClient\Exception\UnknownErrorException;
 use Segakgd\FlexbeApiClient\Helper\FlexbeErrorHelper;
-use Segakgd\FlexbeApiClient\HttpClient\Core\HttpClient;
-use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
-use Segakgd\FlexbeApiClient\HttpClient\Response\Response;
+use Segakgd\FlexbeApiClient\Client\Core\HttpClient;
+use Segakgd\FlexbeApiClient\Client\Request\Request;
+use Segakgd\FlexbeApiClient\Client\Response\Response;
 
 class HttpService
 {

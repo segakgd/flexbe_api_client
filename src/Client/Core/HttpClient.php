@@ -1,6 +1,6 @@
 <?php
 
-namespace Segakgd\FlexbeApiClient\HttpClient\Core;
+namespace Segakgd\FlexbeApiClient\Client\Core;
 
 use Segakgd\FlexbeApiClient\Exception\BadRequestException;
 

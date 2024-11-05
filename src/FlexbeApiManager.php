@@ -13,8 +13,8 @@ use Segakgd\FlexbeApiClient\Exception\InvalidApiKeyException;
 use Segakgd\FlexbeApiClient\Exception\LimitExceededException;
 use Segakgd\FlexbeApiClient\Exception\UndefinedActionException;
 use Segakgd\FlexbeApiClient\Exception\UnknownErrorException;
-use Segakgd\FlexbeApiClient\HttpClient\HttpService;
-use Segakgd\FlexbeApiClient\HttpClient\Request\Request;
+use Segakgd\FlexbeApiClient\Client\HttpService;
+use Segakgd\FlexbeApiClient\Client\Request\Request;
 
 readonly class FlexbeApiManager
 {
